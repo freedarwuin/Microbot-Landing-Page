@@ -981,3 +981,16 @@ h5, .h5 {
         font-size: 14px
     }
 }
+
+
+.card > img {
+    width: 452px;
+    height: 369px;
+}
+
+.card > div {
+    background: black;
+    width:100%;
+    min-height: 80px;
+    opacity: 0.8;
+}
