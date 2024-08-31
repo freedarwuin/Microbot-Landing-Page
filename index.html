@@ -23,9 +23,6 @@
     <link rel="stylesheet" href="./microbot/app.min.css">
 
 
-    <link href="./microbot/css" rel="stylesheet">
-
-
     <link rel="stylesheet"
           href="./microbot/341e4a57816af3ba440d891ca87450ff_framework.css.c1bcd9467a7eeb9006567801face652d.css"
           media="all">
@@ -337,6 +334,13 @@
 </div>
 
 
+<script type="text/javascript">
+    var ipsDebug = false;
+
+    var ipsSettings = {};
+</script>
+
+
 <script type="text/javascript" src="./microbot/root_library.js.f1bb68f70f311d54ea151663ac233bcb.js.download"
         data-ips=""></script>
 
@@ -359,17 +363,21 @@
 
 <script type="text/javascript">
 
-    ips.setSetting('date_format', jQuery.parseJSON('"mm\/dd\/yy"'));
+    window.addEventListener("load", () => {
+        ips.setSetting('date_format', jQuery.parseJSON('"mm\/dd\/yy"'));
 
-    ips.setSetting('date_first_day', jQuery.parseJSON('0'));
+        ips.setSetting('date_first_day', jQuery.parseJSON('0'));
 
-    ips.setSetting('remote_image_proxy', jQuery.parseJSON('0'));
+        ips.setSetting('remote_image_proxy', jQuery.parseJSON('0'));
 
-    ips.setSetting('ipb_url_filter_option', jQuery.parseJSON('"none"'));
+        ips.setSetting('ipb_url_filter_option', jQuery.parseJSON('"none"'));
 
-    ips.setSetting('url_filter_any_action', jQuery.parseJSON('"allow"'));
+        ips.setSetting('url_filter_any_action', jQuery.parseJSON('"allow"'));
 
-    ips.setSetting('bypass_profanity', jQuery.parseJSON('0'));
+        ips.setSetting('bypass_profanity', jQuery.parseJSON('0'));
+    });
+
+
 
     const url = window.location.href;
 
@@ -384,7 +392,7 @@
         const [key, value] = param.split('=');
         console.log(key, value)
         if (key === "source") {
-            if (value === "launcher") {
+            if (value.toLowerCase().includes("launcher")) {
                 document.getElementById('downloadBtn').outerHTML = "<p>Thanks for being part of the Microbot Community!</p>"
             }
         }
