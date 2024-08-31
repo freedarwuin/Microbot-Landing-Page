@@ -20,7 +20,6 @@
     <meta name="theme-color" content="#2c2c2c">
 
 
-
     <link rel="stylesheet" href="./microbot/app.min.css">
 
 
@@ -95,7 +94,8 @@
                         <a class="nav-link" href="https://discord.gg/zaGrfqFEWE" target="_blank">Discord</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://chatgpt.com/g/g-LM0fGeeXB-microbot-documentation" target="_blank">ChatGPT</a>
+                        <a class="nav-link" href="https://chatgpt.com/g/g-LM0fGeeXB-microbot-documentation"
+                           target="_blank">ChatGPT</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://paypal.me/MicrobotBE?country.x=BE" target="_blank">Donate</a>
@@ -129,7 +129,7 @@
             <h5 class="c-main-header__desc fw-normal text-faded c-font-family__primary mt-2 mt-lg-3 mb-3 mb-lg-5">The
                 Best OpenSource OSRS Botting Client</h5>
 
-            <a href="https://github.com/chsami/microbot/releases" target="_blank" rel="noreferrer noopener"
+            <a id="downloadBtn" href="https://github.com/chsami/microbot/releases" target="_blank" rel="noreferrer noopener"
                class="c-button c-button--large c-main-header__c-button py-2 py-sm-3 px-3 px-md-4">
                 Download
                 <svg xmlns="http://www.w3.org/2000/svg" width="22px" class="ms-2" viewBox="0 0 24 24"><title>arrow
@@ -161,7 +161,8 @@
                              class="position-relative top-0 start-0 end-0 bottom-0" lazy="">
                         <div class="position-absolute start-0 bottom-0 p-3">
                             <p class="c-text-secondary mb-0 fs-5 fw-semibold">Fletching</p>
-                            <p class="c-text-faded mb-0">Fletches logs, strings bows! Progressive fletching supported!</p>
+                            <p class="c-text-faded mb-0">Fletches logs, strings bows! Progressive fletching
+                                supported!</p>
                         </div>
                     </div>
                 </div>
@@ -171,7 +172,8 @@
                              class="position-relative top-0 start-0 end-0 bottom-0" lazy="">
                         <div class="position-absolute start-0 bottom-0 p-3">
                             <p class="c-text-secondary mb-0 fs-5 fw-semibold">NMZ</p>
-                            <p class="c-text-faded mb-0">Nightmarezone supports Orbs! Rock cake, absorption, overload support. Special Attack support!</p>
+                            <p class="c-text-faded mb-0">Nightmarezone supports Orbs! Rock cake, absorption, overload
+                                support. Special Attack support!</p>
                         </div>
                     </div>
                 </div>
@@ -181,7 +183,8 @@
                              class="position-relative top-0 start-0 end-0 bottom-0" lazy="">
                         <div class="position-absolute start-0 bottom-0 p-3">
                             <p class="c-text-secondary mb-0 fs-5 fw-semibold">Vorkath</p>
-                            <p class="c-text-faded mb-0">Ranged vorkath, woox walk, banking, multiple kills per trip, sell items on ge, gets items back from death! </p>
+                            <p class="c-text-faded mb-0">Ranged vorkath, woox walk, banking, multiple kills per trip,
+                                sell items on ge, gets items back from death! </p>
                         </div>
                     </div>
                 </div>
@@ -201,7 +204,8 @@
                              class="position-relative top-0 start-0 end-0 bottom-0" lazy="">
                         <div class="position-absolute start-0 bottom-0 p-3">
                             <p class="c-text-secondary mb-0 fs-5 fw-semibold">Antiban support</p>
-                            <p class="c-text-faded mb-0">Natural Mouse movement, simulate mistakes, human like patterns, fatigue and so much more!</p>
+                            <p class="c-text-faded mb-0">Natural Mouse movement, simulate mistakes, human like patterns,
+                                fatigue and so much more!</p>
                         </div>
                     </div>
                 </div>
@@ -360,7 +364,6 @@
         data-ips=""></script>
 
 
-
 <script type="text/javascript">
 
     ips.setSetting('date_format', jQuery.parseJSON('"mm\/dd\/yy"'));
@@ -375,6 +378,25 @@
 
     ips.setSetting('bypass_profanity', jQuery.parseJSON('0'));
 
+    const url = window.location.href;
+
+    // Extract the query string part
+    const queryString = url.split('?')[1];
+
+    // Split the query string into individual parameters
+    const params = queryString.split('&');
+
+    // Iterate over each parameter
+    params.forEach(param => {
+        const [key, value] = param.split('=');
+        console.log(key, value)
+        if (key === "source") {
+            if (value === "launcher") {
+                document.getElementById('downloadBtn').outerHTML = "<p>Thanks for being part of the Microbot Community!</p>"
+            }
+        }
+        console.log(key, decodeURIComponent(value));
+    });
 
 </script>
 
