@@ -337,18 +337,22 @@
     const queryString = url.split('?')[1];
 
     // Split the query string into individual parameters
-    const params = queryString.split('&');
+    const params = queryString?.split('&');
 
     // Iterate over each parameter
-    params.forEach(param => {
+    params?.forEach(param => {
         const [key, value] = param.split('=');
-        console.log(key, value)
         if (key === "source") {
             if (value.toLowerCase().includes("launcher")) {
                 document.getElementById('downloadBtn').outerHTML = "<p>Thanks for being part of the Microbot Community!</p>"
             }
         }
-        console.log(key, decodeURIComponent(value));
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+        // Delay the effect for better visibility
+        setTimeout(function() {
+            document.body.classList.add('loaded');
+        }, 100);  // 0.5 second delay before starting the transition
     });
 
 </script>
