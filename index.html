@@ -357,6 +357,52 @@
 
 </script>
 
+<script>
+    function createRandomSparkle() {
+        const sparkles = document.querySelectorAll('.sparkle')
+        for (const sparkle of sparkles) {
+            if (sparkle.style.left > window.innerWidth
+            || sparkle.style.left < 0
+            || sparkle.style.top > window.innerWidth
+            || sparkle.style.top < 0) {
+                sparkle.remove()
+            }
+        }
+        const sparkle = document.createElement("div");
+        sparkle.classList.add("sparkle");
+
+
+        const randomX = Math.random() * window.innerWidth;
+        const randomY = Math.random() * window.innerHeight;
+
+        sparkle.style.left = `${randomX}px`;
+        sparkle.style.top = `${randomY}px`;
+
+
+        const randomXDirection = (Math.random() - 0.5)*10;
+        const randomYDirection = (Math.random() - 0.5)*10;
+
+        sparkle.style.setProperty("--randomXDirection", randomXDirection);
+        sparkle.style.setProperty("--randomYDirection", randomYDirection);
+
+
+
+        document.body.appendChild(sparkle);
+
+
+        sparkle.style.animation = `sparkleAnimation 10s linear`;
+
+
+        sparkle.style.animationDirection = randomXDirection > 0 ? "normal" : "reverse";
+
+
+        setTimeout(() => {
+            sparkle.remove();
+        }, 10000);
+    }
+
+    setInterval(createRandomSparkle, 500);
+</script>
 
 <span style="visibility: hidden; position: absolute; top: -300px; width: 1px; height: 1px; overflow: hidden; left: -300px;"><span
         class="ipsLoading ipsLoading_noAnim" style="display: block;"></span></span></body>
