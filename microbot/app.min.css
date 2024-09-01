@@ -880,14 +880,14 @@ hr {
 }
 
 .card > img {
-    width: 452px;
-    height: 369px
+    width: 100%;
+    height: 260px
 }
 
 .card > div {
     background: #000;
     width: 100%;
-    min-height: 80px;
+    height:77px;
     opacity: .8
 }
 
