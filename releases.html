@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Microbot - Free Open Source Botting Client</title>
+
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <meta name="description" content="Microbot Free open source botting client based on runelite">
+
+
+    <meta property="og:site_name" content="Microbot">
+
+
+    <meta property="og:locale" content="en_US">
+
+
+    <meta name="theme-color" content="#2c2c2c">
+
+
+    <link rel="stylesheet" href="./microbot/app.min.css">
+
+
+    <link rel="stylesheet"
+          href="./microbot/341e4a57816af3ba440d891ca87450ff_framework.css.c1bcd9467a7eeb9006567801face652d.css"
+          media="all">
+
+    <link rel="stylesheet"
+          href="./microbot/20446cf2d164adcc029377cb04d43d17_flags.css.be60c469fe9d673f833faaa74a81e375.css" media="all">
+
+    <link rel="stylesheet"
+          href="./microbot/90eb5adf50a8c640f633d47fd7eb1778_core.css.730a336650d62c3b59570edc9065b630.css" media="all">
+
+    <link rel="stylesheet"
+          href="./microbot/5a0da001ccc2200dc5625c3f3934497d_core_responsive.css.1d08c9ed37ed1cae43d3985a3b2316ad.css"
+          media="all">
+
+</head>
+<body style="padding:32px;background:none">
+<header class="c-header">
+    <div class="c-border-red mb-2"></div>
+    <!-- Navigation Start -->
+    <nav class="c-nav navbar navbar-expand-sm py-2" style="flex-wrap:nowrap;justify-content: flex-start">
+        <div class="container align-items-stretch">
+            <a class="navbar-brand me-0 me-lg-3 me-xl-5" href="../index.html">
+                <img src="./microbot/logo.png" class="c-nav__logo" loading="lazy" alt="logo">
+            </a>
+            <div class="p-3 p-xl-0" style="line-height: 2rem;width: 100%;" id="navbarMenu">
+                <ul class="navbar-nav me-auto text-center text-xl-left gap-3 gap-xl-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.github.com/chsami/microbot" target="_blank">Github</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://discord.gg/zaGrfqFEWE" target="_blank">Discord</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://chatgpt.com/g/g-LM0fGeeXB-microbot-documentation"
+                           target="_blank">ChatGPT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://paypal.me/MicrobotBE?country.x=BE" target="_blank">Donate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Releases</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <ul id="elMobileNav"
+                class="ipsList_inline ipsResponsive_hideDesktop ipsResponsive_block my-auto d-flex gx-2"
+                data-controller="core.front.core.mobileNav" data-default="all">
+
+                <li class="navbar-toggler my-auto py-3 position-relative" data-ipsdrawer=""
+                    data-ipsdrawer-drawerelem="#elMobileDrawer">
+                    <a href="#">
+                        <i class="fa fa-navicon"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Navigation End -->
+</header>
+<div class="content-section">
+    <ul class="list-group">
+
+    </ul>
+</div>
+
+
+<style>
+    .list-group {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+    .list-group-item:first-child {
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+    }
+
+    .list-group-item {
+        background: #141414 !important;
+    }
+
+    .list-group-item {
+        position: relative;
+        display: block;
+        padding: .75rem 1.25rem;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, .125);
+    }
+
+    .content-section {
+        margin: auto;
+        width: 80%;
+        max-width: 1000px;
+    }
+</style>
+
+<script async=false defer=false async src="libraries/timeago/index.js"></script>
+<script async=false defer=false async src="microbot/releases/release.js"></script>
+
+<script>
+
+    window.addEventListener('load', function () {
+        const listGroup = document.querySelector('.list-group')
+
+        for (const release of releases) {
+            listGroup.innerHTML += `
+        <a class="list-group-item list-group-item-action flex-column align-items-start" activeclassname="active"
+           href="releases/${release.version}.html">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">${release.title}</h5>
+                <small class="text-muted">${format(release.date)}</small>
+            </div>
+            <p class="mb-1 text-muted">${release.content}</p>
+        </a>
+        `
+        }
+
+    })
+</script>
+
+</body>
+</html>
