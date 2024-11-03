@@ -38,7 +38,55 @@
           media="all">
 
 </head>
-<body style="padding:32px">
+<body style="padding:32px;background:none">
+<header class="c-header">
+    <div class="c-border-red mb-2"></div>
+    <!-- Navigation Start -->
+    <nav class="c-nav navbar navbar-expand-sm py-2" style="flex-wrap:nowrap;justify-content: flex-start">
+        <div class="container align-items-stretch">
+            <a class="navbar-brand me-0 me-lg-3 me-xl-5" href="../index.html">
+                <img src="./microbot/logo.png" class="c-nav__logo" loading="lazy" alt="logo">
+            </a>
+            <div class="p-3 p-xl-0" style="line-height: 2rem;width: 100%;" id="navbarMenu">
+                <ul class="navbar-nav me-auto text-center text-xl-left gap-3 gap-xl-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.github.com/chsami/microbot" target="_blank">Github</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://discord.gg/zaGrfqFEWE" target="_blank">Discord</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://chatgpt.com/g/g-LM0fGeeXB-microbot-documentation"
+                           target="_blank">ChatGPT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://paypal.me/MicrobotBE?country.x=BE" target="_blank">Donate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Releases</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <ul id="elMobileNav"
+                class="ipsList_inline ipsResponsive_hideDesktop ipsResponsive_block my-auto d-flex gx-2"
+                data-controller="core.front.core.mobileNav" data-default="all">
+
+                <li class="navbar-toggler my-auto py-3 position-relative" data-ipsdrawer=""
+                    data-ipsdrawer-drawerelem="#elMobileDrawer">
+                    <a href="#">
+                        <i class="fa fa-navicon"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Navigation End -->
+</header>
 <div class="content-section">
     <ul class="list-group">
 
@@ -79,22 +127,11 @@
 </style>
 
 <script async=false defer=false async src="libraries/timeago/index.js"></script>
+<script async=false defer=false async src="microbot/releases/release.js"></script>
 
 <script>
 
-    const releases = [
-        {
-            date: new Date('11/01/2024'), //MM/dd/YYYY
-            version: '1.5.9',
-            title: '1.5.9 Release',
-            content: 'Spell reordering, notification improvements, and teleport submenus'
-        }
-    ]
-
-
-
     window.addEventListener('load', function () {
-        console.log("loaded!")
         const listGroup = document.querySelector('.list-group')
 
         for (const release of releases) {
