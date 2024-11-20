@@ -1,5 +1,12 @@
 const releases = [
     {
+        date: new Date('11/20/2024'), //MM/dd/YYYY
+        version: '1.6.1',
+        title: '1.6.1 Release',
+        content: 'Tormented Demon Plugin, Mixology Plugin, Aerial Fishing Plugin, Varrock Museum Cleaner Plugin and many more!',
+        author: 'Mocrosoft'
+    },
+    {
         date: new Date('11/06/2024'), //MM/dd/YYYY
         version: '1.6.0',
         title: '1.6.0 Release',
