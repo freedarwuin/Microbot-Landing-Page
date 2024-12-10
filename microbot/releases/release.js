@@ -1,5 +1,12 @@
 const releases = [
     {
+        date: new Date('12/10/2024'), //MM/dd/YYYY
+        version: '1.6.5',
+        title: '1.6.5 Release',
+        content: 'Arceuus Runecrafting (blood runes support, Jewelry Plugin,  and many more!',
+        author: 'Mocrosoft'
+    },
+    {
         date: new Date('11/20/2024'), //MM/dd/YYYY
         version: '1.6.1',
         title: '1.6.1 Release',
