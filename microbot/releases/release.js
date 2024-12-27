@@ -1,5 +1,12 @@
 const releases = [
     {
+        date: new Date('12/27/2024'), //MM/dd/YYYY
+        version: '1.6.6',
+        title: '1.6.6 Release',
+        content: 'Holiday event and script improvements!',
+        author: 'Mocrosoft'
+    },
+    {
         date: new Date('12/10/2024'), //MM/dd/YYYY
         version: '1.6.5',
         title: '1.6.5 Release',
