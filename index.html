@@ -21,6 +21,7 @@
 
 
     <link rel="stylesheet" href="./microbot/app.min.css">
+    <link rel="stylesheet" href="./libraries/carousel/carousel.css">
 
 
     <link rel="stylesheet"
@@ -149,73 +150,113 @@
     <section class="c-section-area c-content-section mb-0" id="featured-content">
         <div class="container">
             <h2 class="c-section-heading text-center mx-auto">Featured Plugins</h2>
-            <div class="row justify-content-center align-items-center g-2 g-md-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-                <div class="col">
-                    <div class="card d-flex flex-column justify-content-end position-relative">
-                        <img src="./microbot/feature-1.jpg" alt="Title"
-                             class="position-relative top-0 start-0 end-0 bottom-0" loading="lazy">
-                        <div class="position-absolute start-0 bottom-0 p-3">
-                            <p class="c-text-secondary mb-0 fs-5 fw-semibold">Wintertodt</p>
-                            <p class="c-text-faded mb-0">Chop, Fletch, Light, Build, Bank, Eats, All food supported!</p>
+
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <div class="plugin-card">
+                            <img src="./microbot/feature-1.jpg" alt="Wintertodt" loading="lazy">
+                            <div class="plugin-info">
+                                <p class="c-text-secondary">Wintertodt</p>
+                                <p class="c-text-faded">Chop, Fletch, Light, Build, Bank, Eats, All food supported!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="plugin-card">
+                            <img src="./microbot/feature-2.jpg" alt="Fletching" loading="lazy">
+                            <div class="plugin-info">
+                                <p class="c-text-secondary">Fletching</p>
+                                <p class="c-text-faded">Fletches logs, strings bows! Progressive fletching supported!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="plugin-card">
+                            <img src="./microbot/feature-3.jpg" alt="NMZ" loading="lazy">
+                            <div class="plugin-info">
+                                <p class="c-text-secondary">NMZ</p>
+                                <p class="c-text-faded">Nightmarezone supports Orbs! Rock cake, absorption, overload support. Special Attack support!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="plugin-card">
+                            <img src="./microbot/feature-4.jpg" alt="Vorkath" loading="lazy">
+                            <div class="plugin-info">
+                                <p class="c-text-secondary">Vorkath</p>
+                                <p class="c-text-faded">Ranged vorkath, woox walk, banking, multiple kills per trip, sell items on ge, gets items back from death!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="plugin-card">
+                            <img src="./microbot/feature-5.png" alt="Sand Crabs" loading="lazy">
+                            <div class="plugin-info">
+                                <p class="c-text-secondary">Sand Crabs</p>
+                                <p class="c-text-faded">Multiple spots, Food support, Aggro reset</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="plugin-card">
+                            <img src="./microbot/feature-6.jpg" alt="Antiban support" loading="lazy">
+                            <div class="plugin-info">
+                                <p class="c-text-secondary">Antiban support</p>
+                                <p class="c-text-faded">Natural Mouse movement, simulate mistakes, human like patterns, fatigue and so much more!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="plugin-card">
+                            <img src="./images/featured/mixology.png" alt="Mixology" loading="lazy">
+                            <div class="plugin-info">
+                                <p class="c-text-secondary">Mixology</p>
+                                <p class="c-text-faded">Mixology, efficient methods, grinds and plays the minigame</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="plugin-card">
+                            <img src="./images/featured/gotr.png" alt="Guardians of the rift" loading="lazy">
+                            <div class="plugin-info">
+                                <p class="c-text-secondary">Guardians of the rift</p>
+                                <p class="c-text-faded">Plays the guardians of the rift minigame!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="plugin-card">
+                            <img src="./images/featured/bots.jpg" alt="Bots" loading="lazy">
+                            <div class="plugin-info">
+                                <p class="c-text-secondary">Multiple sessions for free</p>
+                                <p class="c-text-faded">Open as many microbot instances as you want for free!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="plugin-card">
+                            <img src="./images/featured/mining.png" alt="Mining" loading="lazy">
+                            <div class="plugin-info">
+                                <p class="c-text-secondary">Mining</p>
+                                <p class="c-text-faded">Supports Motherload Mine, PowerMiner and many more!</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card d-flex flex-column justify-content-end position-relative">
-                        <img src="./microbot/feature-2.jpg" alt="Title"
-                             class="position-relative top-0 start-0 end-0 bottom-0" loading="lazy">
-                        <div class="position-absolute start-0 bottom-0 p-3">
-                            <p class="c-text-secondary mb-0 fs-5 fw-semibold">Fletching</p>
-                            <p class="c-text-faded mb-0">Fletches logs, strings bows! Progressive fletching
-                                supported!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card d-flex flex-column justify-content-end position-relative">
-                        <img src="./microbot/feature-3.jpg" alt="Title"
-                             class="position-relative top-0 start-0 end-0 bottom-0" loading="lazy">
-                        <div class="position-absolute start-0 bottom-0 p-3">
-                            <p class="c-text-secondary mb-0 fs-5 fw-semibold">NMZ</p>
-                            <p class="c-text-faded mb-0">Nightmarezone supports Orbs! Rock cake, absorption, overload
-                                support. Special Attack support!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card d-flex flex-column justify-content-end position-relative">
-                        <img src="./microbot/feature-4.jpg" alt="Title"
-                             class="position-relative top-0 start-0 end-0 bottom-0" loading="lazy">
-                        <div class="position-absolute start-0 bottom-0 p-3">
-                            <p class="c-text-secondary mb-0 fs-5 fw-semibold">Vorkath</p>
-                            <p class="c-text-faded mb-0">Ranged vorkath, woox walk, banking, multiple kills per trip,
-                                sell items on ge, gets items back from death! </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card d-flex flex-column justify-content-end position-relative">
-                        <img src="./microbot/feature-5.png" alt="Title"
-                             class="position-relative top-0 start-0 end-0 bottom-0" loading="lazy">
-                        <div class="position-absolute start-0 bottom-0 p-3">
-                            <p class="c-text-secondary mb-0 fs-5 fw-semibold">Sand Crabs</p>
-                            <p class="c-text-faded mb-0">Multiple spots, Food support, Aggro reset</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card d-flex flex-column justify-content-end position-relative">
-                        <img src="./microbot/feature-6.jpg" alt="Title"
-                             class="position-relative top-0 start-0 end-0 bottom-0" loading="lazy">
-                        <div class="position-absolute start-0 bottom-0 p-3">
-                            <p class="c-text-secondary mb-0 fs-5 fw-semibold">Antiban support</p>
-                            <p class="c-text-faded mb-0">Natural Mouse movement, simulate mistakes, human like patterns,
-                                fatigue and so much more!</p>
-                        </div>
-                    </div>
-                </div>
-                <h2 class="c-section-heading text-center mx-auto">And many more...</h2>
+
+                <button class="carousel-button carousel-button-prev">←</button>
+                <button class="carousel-button carousel-button-next">→</button>
+
+                <div class="carousel-dots"></div>
             </div>
+
+            <h2 class="c-section-heading text-center mx-auto">And many more...</h2>
         </div>
     </section>
 
@@ -334,7 +375,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="https://paypal.me/MicrobotBE?country.x=BE" target="_blank">Donate</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.youtube.com/@eudora8057" target="_blank">Youtube</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -487,4 +530,8 @@
             // You could set this up by not injecting the GA script at all when declined
         }
     });
+
 </script>
+
+<script defer src="./libraries/carousel/carousel.js"></script>
+
