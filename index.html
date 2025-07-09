@@ -140,9 +140,9 @@
                 <a href="https://developmentb464.blob.core.windows.net/microbot/installer/microbot-launcher-x32-1.1.0%20Setup.exe"
                    target="_blank" rel="noreferrer noopener">Windows 32-bit</a>
                 <hr />
-                <a href="https://files.microbot.cloud/releases/microbot/stable/microbot-1.9.2.jar"
+                <a href="https://files.microbot.cloud/releases/microbot/stable/microbot-1.9.3.jar"
                    target="_blank"
-                   rel="noreferrer noopener">jar-1.9.2</a>
+                   rel="noreferrer noopener">jar-1.9.3</a>
             </div>
         </div>
         </div>
@@ -468,7 +468,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
 
-        fetch('https://microbot.cloud/api/session/count').then(async (result) => {
+        fetch('https://microbot-api.azurewebsites.net/api/session/count').then(async (result) => {
             const playerCount = await result.json()
             const counterElement = document.getElementById('counter');
             animateCounter(counterElement, 0, playerCount, 1000); // Animate from 0 to 1000 in 2 seconds
