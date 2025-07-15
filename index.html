@@ -134,12 +134,12 @@
             </button>
             <div class="dropdown-content c-button c-button--large c-main-header__c-button py-2 py-sm-3 px-3 px-md-4"
                  id="dropdownContent">
-                <a href="https://files.microbot.cloud/releases/microbot-launcher/Microbot%20Launcher%20Setup%202.0.0.exe"
-                   target="_blank" rel="noreferrer noopener">Windows</a>
+                <a id="launcher-hyperlink" href=""
+                   target="_blank" rel="noreferrer noopener">Loading...</a>
                 <hr />
-                <a href="https://files.microbot.cloud/releases/microbot/stable/microbot-1.9.5.jar"
+                <a id="microbot-hyperlink" href="#"
                    target="_blank"
-                   rel="noreferrer noopener">jar-1.9.5</a>
+                   rel="noreferrer noopener">Loading...</a>
             </div>
         </div>
         </div>
@@ -465,10 +465,24 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
 
-        fetch('https://microbot-api.azurewebsites.net/api/session/count').then(async (result) => {
+        fetch('https://microbot.cloud/api/session/count').then(async (result) => {
             const playerCount = await result.json()
             const counterElement = document.getElementById('counter');
             animateCounter(counterElement, 0, playerCount, 1000); // Animate from 0 to 1000 in 2 seconds
+        })
+
+        fetch('https://microbot.cloud/api/file/client').then(async (result) => {
+            const version = await result.text()
+            const microbotHyperLink = document.getElementById('microbot-hyperlink');
+            microbotHyperLink.innerText = 'jar-' + version
+            microbotHyperLink.href = `https://files.microbot.cloud/releases/microbot/stable/microbot-${version}.jar`
+        })
+
+        fetch('https://microbot.cloud/api/file/launcher').then(async (result) => {
+            const version = await result.text()
+            const microbotHyperLink = document.getElementById('launcher-hyperlink');
+            microbotHyperLink.innerText = 'Windows'
+            microbotHyperLink.href = `https://files.microbot.cloud/releases/microbot-launcher/Microbot%20Launcher%20Setup%20${version}.exe`
         })
 
         var cookieBanner = document.getElementById('cookie-banner');
