@@ -1,18 +1,20 @@
 ![image](https://github.com/user-attachments/assets/2f9b9b93-2bf2-460a-9039-f773462a6220)
 
-# Microbot Landing Page
+# Página de Inicio de Microbot
 
-## Overview
-Welcome to the Microbot Landing Page project! This project is a simple and responsive landing page built using HTML, CSS, and JavaScript. The landing page showcases Microbot and it's features. It also contains some links to discord, chatgpt etc...
+## Descripción General
+¡Bienvenido al proyecto de Página de Inicio de Microbot!  
+Este proyecto es una página de inicio sencilla y adaptable construida con **HTML**, **CSS** y **JavaScript**.  
+La página presenta a Microbot y sus características. También contiene algunos enlaces a Discord, ChatGPT, etc.
 
-## Steps to Contribute:
-1. Fork the repository
-2.  Create a new branch (git checkout -b feature-branch)
-3. Commit your changes (git commit -m 'Add some feature')
-4. Push to the branch (git push origin feature-branch)
-5. Create a new Pull Request
+## Pasos para Contribuir:
+1. Haz un fork del repositorio
+2. Crea una nueva rama (`git checkout -b nombre-de-la-rama`)
+3. Haz commit de tus cambios (`git commit -m 'Añadir alguna funcionalidad'`)
+4. Sube los cambios a la rama (`git push origin nombre-de-la-rama`)
+5. Crea una nueva **Pull Request**
 
-## Youtube
+## YouTube
 
 [![image](https://github.com/user-attachments/assets/f15ec853-9b92-474e-a269-9a984e8bb792)](https://www.youtube.com/channel/UCEj_7N5OPJkdDi0VTMOJOpw)
 
@@ -20,14 +22,13 @@ Welcome to the Microbot Landing Page project! This project is a simple and respo
 
 [![Discord Banner 1](https://discord.com/api/guilds/1087718903985221642/widget.png?style=banner1)](https://discord.gg/zaGrfqFEWE)
 
- 
-If you have any questions, please join our [Discord](https://discord.gg/zaGrfqFEWE) server.
+Si tienes alguna pregunta, únete a nuestro servidor de [Discord](https://discord.gg/zaGrfqFEWE).
 
+## ☕ Invítame un Café
 
-## ☕ Buy Me a Coffee
+Si disfrutas de mi trabajo de código abierto y quieres apoyarme, considera invitarme un café.  
+¡Tu apoyo me ayuda a mantenerme con cafeína y motivado para seguir mejorando y creando proyectos increíbles!
 
-If you enjoy my open source work and would like to support me, consider buying me a coffee! Your support helps me stay caffeinated and motivated to keep improving and creating awesome projects.
+[![Buy Me a Coffee](https://img.shields.io/badge/Invítame%20un%20Café-donar-yellow)](https://www.paypal.com/paypalme/MicrobotBE?country.x=BE)
 
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-donate-yellow)](https://www.paypal.com/paypalme/MicrobotBE?country.x=BE)
-
-Thank you for your support! 😊
+¡Gracias por tu apoyo! 😊

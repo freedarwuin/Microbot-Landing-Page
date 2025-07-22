@@ -119,10 +119,10 @@
     <section class="c-main-header c-main-header--home py-5 d-flex flex-column justify-content-center">
         <div class="container">
             <h1 class="c-main-header__title display-1 text-uppercase my-0">Microbot</h1>
-            <h1 class="c-main-header__title c-main-header__title--gold text-uppercase my-0">Open Source &
-                Free</h1>
+            <h1 class="c-main-header__title c-main-header__title--gold text-uppercase my-0">Open Source & Free</h1>
             <h5 class="c-main-header__desc fw-normal text-faded c-font-family__primary mt-2 mt-lg-3 mb-3 mb-lg-5">
-                The Best OpenSource OSRS Client </h5>
+            El Mejor Cliente OpenSource de OSRS
+            </h5>
             <h5 class="c-main-header__desc fw-normal text-faded c-font-family__primary mt-2 mt-lg-3 mb-3 mb-lg-5">
                 Players Online <span id="counter" class="counter">0</span></h5>
             <br/>
@@ -472,14 +472,14 @@
             animateCounter(counterElement, 0, playerCount, 1000); // Animate from 0 to 1000 in 2 seconds
         })
 
-        fetch('https://microbot.cloud/api/file/client').then(async (result) => {
+        fetch('https://microbot.cloud/api/version/client').then(async (result) => {
             const version = await result.text()
             const microbotHyperLink = document.getElementById('microbot-hyperlink');
             microbotHyperLink.innerText = 'jar-' + version
             microbotHyperLink.href = `https://files.microbot.cloud/releases/microbot/stable/microbot-${version}.jar`
         })
 
-        fetch('https://microbot.cloud/api/file/launcher').then(async (result) => {
+        fetch('https://microbot.cloud/api/version/launcher').then(async (result) => {
             const version = await result.text()
             const microbotHyperLink = document.getElementById('launcher-hyperlink');
             microbotHyperLink.innerText = 'Windows'
