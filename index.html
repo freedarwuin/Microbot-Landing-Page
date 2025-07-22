@@ -472,14 +472,14 @@
             animateCounter(counterElement, 0, playerCount, 1000); // Animate from 0 to 1000 in 2 seconds
         })
 
-        fetch('https://microbot.cloud/api/file/client').then(async (result) => {
+        fetch('https://microbot.cloud/api/version/client').then(async (result) => {
             const version = await result.text()
             const microbotHyperLink = document.getElementById('microbot-hyperlink');
             microbotHyperLink.innerText = 'jar-' + version
             microbotHyperLink.href = `https://files.microbot.cloud/releases/microbot/stable/microbot-${version}.jar`
         })
 
-        fetch('https://microbot.cloud/api/file/launcher').then(async (result) => {
+        fetch('https://microbot.cloud/api/version/launcher').then(async (result) => {
             const version = await result.text()
             const microbotHyperLink = document.getElementById('launcher-hyperlink');
             microbotHyperLink.innerText = 'Windows'
