@@ -38,6 +38,29 @@
           href="./microbot/5a0da001ccc2200dc5625c3f3934497d_core_responsive.css.1d08c9ed37ed1cae43d3985a3b2316ad.css"
           media="all">
 
+    <style>
+        .new-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b35, #ff8c5a);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: 8px;
+            box-shadow: 0 2px 4px rgba(255, 107, 53, 0.3);
+            animation: pulse 2s infinite;
+            vertical-align: super;
+            line-height: 1;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+
 </head>
 <body style="background-color:black !important;" class="ipsApp ipsApp_front ipsClearfix ipsJS_has ipsApp_noTouch"
       data-controller="core.front.core.app" data-message="" data-pageapp="" data-pagelocation="front" data-pagemodule=""
@@ -93,7 +116,7 @@
                         <a class="nav-link" href="https://paypal.me/MicrobotBE?country.x=BE" target="_blank">Donate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="releases.html">Releases</a>
+                        <a class="nav-link" href="releases.html">Releases<span id="releases-badge" class="new-badge" style="display: none;">NEW</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="plugins.html">Plugins</a>
@@ -544,8 +567,42 @@
             console.log('Google Analytics disabled');
             // You could set this up by not injecting the GA script at all when declined
         }
+
+        // Check for new releases and show badge if needed
+        checkForNewReleases();
     });
 
+    // Function to check for new releases and show/hide badge
+    function checkForNewReleases() {
+        // Import releases data from release.js
+        const script = document.createElement('script');
+        script.src = './microbot/releases/release.js';
+        script.onload = function() {
+            // Check if any release is within the past 7 days
+            const currentDate = new Date();
+            let hasNewRelease = false;
+
+            for (const release of releases) {
+                const releaseDate = new Date(release.date);
+                const timeDiff = currentDate.getTime() - releaseDate.getTime();
+                const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                if (daysDiff <= 7) {
+                    hasNewRelease = true;
+                    break;
+                }
+            }
+
+            // Show or hide the badge based on whether there are new releases
+            const badge = document.getElementById('releases-badge');
+            if (hasNewRelease) {
+                badge.style.display = 'inline-block';
+            } else {
+                badge.style.display = 'none';
+            }
+        };
+        document.head.appendChild(script);
+    }
 </script>
 
 <script defer src="./libraries/carousel/carousel.js"></script>

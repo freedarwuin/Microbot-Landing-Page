@@ -68,6 +68,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Releases</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="plugins.html">Plugins</a>
+                    </li>
                 </ul>
             </div>
 
@@ -124,6 +127,25 @@
         width: 80%;
         max-width: 1000px;
     }
+
+    .new-pill {
+        display: inline-block;
+        background: linear-gradient(135deg, #ff6b35, #ff8c5a);
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 12px;
+        margin-left: 10px;
+        box-shadow: 0 2px 4px rgba(255, 107, 53, 0.3);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
 </style>
 
 <script async=false defer=false async src="libraries/timeago/index.js"></script>
@@ -135,11 +157,21 @@
         const listGroup = document.querySelector('.list-group')
 
         for (const release of releases) {
+            // Check if release is within the past 7 days
+            const releaseDate = new Date(release.date)
+            const currentDate = new Date()
+            const timeDiff = currentDate.getTime() - releaseDate.getTime()
+            const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24))
+            const isNew = daysDiff <= 7
+
+            // Create the new pill if the release is new
+            const newPill = isNew ? '<span class="new-pill">NEW</span>' : ''
+
             listGroup.innerHTML += `
         <a class="list-group-item list-group-item-action flex-column align-items-start" activeclassname="active"
            href="releases/${release.version}.html">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">${release.title}</h5>
+                <h5 class="mb-1">${release.title}${newPill}</h5>
                 <small class="text-muted">${format(release.date)}</small>
             </div>
             <p class="mb-1 text-muted">${release.content}</p>
