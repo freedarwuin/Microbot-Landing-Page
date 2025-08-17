@@ -35,19 +35,32 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .plugins-grid {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-evenly;
-            gap: 20px;
+            gap: 30px;
             margin-top: 30px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .plugins-grid-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 900px; /* Fits 3 cards of 280px each + 2 gaps of 20px */
         }
 
         @media (min-width: 1200px) {
             .plugins-grid {
-                justify-content: space-around;
             }
         }
 
@@ -65,14 +78,15 @@
             height: 100%;
             flex: 0 0 280px;
             max-width: 280px;
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
         }
 
         .plugin-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             border-color: #555;
             text-decoration: none;
             color: inherit;
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
         }
 
         .plugin-image-container {
@@ -194,9 +208,15 @@
         }
 
         .plugins-count {
-            color: #888;
-            font-size: 1.1em;
-            margin-top: 10px;
+            color: #fff;
+            font-size: 1.4em;
+            margin-top: 15px;
+            font-weight: 600;
+            background: rgba(217, 44, 38, 0.15);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(217, 44, 38, 0.3);
         }
 
         .plugin-card:focus {
@@ -212,6 +232,51 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+
+        /* Search bar styles */
+        .search-container {
+            margin: 30px 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            background: #2a2a2a;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid #444;
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+            justify-content: space-between;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 25px !important;
+            border: none !important;
+            border-radius: 30px 0 0 30px !important;
+            background-color: #2a2a2a !important;
+            color: #fff !important;
+            font-size: 1.1em !important;
+            max-width: 100% !important;
+        }
+
+        .search-input::placeholder {
+            color: #888;
+        }
+
+        .highlight-count {
+            animation: highlight 0.5s ease-out;
+        }
+
+        @keyframes highlight {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
@@ -298,6 +363,13 @@
         <div class="plugins-header">
             <h1 class="display-2 text-uppercase">Microbot Plugins</h1>
             <p>Extend your Microbot experience with community-developed plugins</p>
+
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" id="pluginSearch" class="search-input" placeholder="Search plugins by name, author, or tags...">
+                </div>
+            </div>
+
             <div class="plugins-count" id="pluginsCount">Loading plugins...</div>
         </div>
 
@@ -311,8 +383,11 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('pluginSearch')?.focus();
     fetchPlugins();
 });
+
+let allPlugins = []; // Store all plugins for searching
 
 async function fetchPlugins() {
     const pluginsContainer = document.getElementById('pluginsContainer');
@@ -325,19 +400,16 @@ async function fetchPlugins() {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const plugins = await response.json();
+        allPlugins = await response.json(); // Store all plugins
 
-        // Update plugins count
-        pluginsCount.textContent = `${plugins.length} plugins available`;
+        // Create count-up animation for plugins count
+        animatePluginCount(allPlugins.length);
 
-        // Clear loading message
-        pluginsContainer.innerHTML = '';
+        // Display all plugins initially
+        displayPlugins(allPlugins);
 
-        // Render plugins
-        plugins.forEach(plugin => {
-            const pluginCard = createPluginCard(plugin);
-            pluginsContainer.appendChild(pluginCard);
-        });
+        // Set up search functionality
+        setupSearch();
 
     } catch (error) {
         console.error('Error fetching plugins:', error);
@@ -349,6 +421,116 @@ async function fetchPlugins() {
         `;
         pluginsCount.textContent = 'Error loading plugins';
     }
+}
+
+function animatePluginCount(total) {
+    const pluginsCount = document.getElementById('pluginsCount');
+    let current = 0;
+    const duration = 1500; // Animation duration in milliseconds
+    const step = Math.ceil(total / (duration / 50)); // Update every 50ms
+
+    // Clear any existing text first
+    pluginsCount.innerHTML = '<span class="count-number">0</span> plugins available';
+
+    const countSpan = pluginsCount.querySelector('.count-number');
+
+    const interval = setInterval(() => {
+        current += step;
+        if (current >= total) {
+            clearInterval(interval);
+            current = total;
+
+            // Add a highlight animation once counting is complete
+            setTimeout(() => {
+                countSpan.classList.add('highlight-count');
+            }, 1000);
+        }
+        countSpan.textContent = current;
+    }, 50);
+}
+
+function displayPlugins(plugins) {
+    const pluginsContainer = document.getElementById('pluginsContainer');
+    const pluginsCount = document.getElementById('pluginsCount');
+
+    // Update count for search results
+    if (plugins.length !== allPlugins.length) {
+        pluginsCount.innerHTML = `<span class="count-number">${plugins.length}</span> of ${allPlugins.length} plugins found`;
+    }
+
+    // No animation needed for the initial display or when returning to all plugins
+    // as it was already animated when the page loaded
+
+    // Clear container
+    pluginsContainer.innerHTML = '';
+
+    if (plugins.length === 0) {
+        pluginsContainer.innerHTML = `
+            <div class="error">
+                <i class="fa fa-search"></i>
+                No plugins match your search criteria.
+            </div>
+        `;
+        return;
+    }
+
+    // Create a row container for every set of 3 cards
+    for (let i = 0; i < plugins.length; i += 3) {
+        const rowContainer = document.createElement('div');
+        rowContainer.className = 'plugins-grid-row';
+
+        // Add up to 3 cards per row
+        for (let j = i; j < i + 3 && j < plugins.length; j++) {
+            const pluginCard = createPluginCard(plugins[j]);
+            rowContainer.appendChild(pluginCard);
+        }
+
+        pluginsContainer.appendChild(rowContainer);
+    }
+}
+
+function setupSearch() {
+    const searchInput = document.getElementById('pluginSearch');
+
+    // Search when Enter key is pressed
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+    });
+
+    // Real-time search as user types (optional, can be removed if preferred)
+    searchInput.addEventListener('input', performSearch);
+}
+
+function performSearch() {
+    const searchTerm = document.getElementById('pluginSearch').value.toLowerCase().trim();
+
+    if (searchTerm === '') {
+        // If search is empty, show all plugins
+        displayPlugins(allPlugins);
+        return;
+    }
+
+    // Filter plugins based on search term
+    const filtered = allPlugins.filter(plugin => {
+        // Search in name
+        if (plugin.name.toLowerCase().includes(searchTerm)) return true;
+
+        // Search in author
+        if (plugin.author.toLowerCase().includes(searchTerm)) return true;
+
+        // Search in description
+        if (plugin.description.toLowerCase().includes(searchTerm)) return true;
+
+        // Search in tags
+        if (plugin.tags && plugin.tags.some(tag => tag.toLowerCase().includes(searchTerm))) return true;
+
+        return false;
+    });
+
+    // Display filtered results
+    displayPlugins(filtered);
 }
 
 function createPluginCard(plugin) {
