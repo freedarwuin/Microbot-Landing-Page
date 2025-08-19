@@ -400,7 +400,9 @@ async function fetchPlugins() {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        allPlugins = await response.json(); // Store all plugins
+        // Get all plugins and filter out disabled ones
+        const plugins = await response.json();
+        allPlugins = plugins.filter(plugin => !plugin.disable);
 
         // Create count-up animation for plugins count
         animatePluginCount(allPlugins.length);
@@ -517,8 +519,8 @@ function performSearch() {
         // Search in name
         if (plugin.name.toLowerCase().includes(searchTerm)) return true;
 
-        // Search in author
-        if (plugin.author.toLowerCase().includes(searchTerm)) return true;
+        // Search in authors
+        if (plugin.authors && plugin.authors.some(author => author.toLowerCase().includes(searchTerm))) return true;
 
         // Search in description
         if (plugin.description.toLowerCase().includes(searchTerm)) return true;
@@ -543,15 +545,18 @@ function createPluginCard(plugin) {
     // Create tags HTML
     const tagsHtml = plugin.tags.map(tag => `<span class="plugin-tag">${tag}</span>`).join('');
 
+    // Create authors string from array
+    const authorsText = plugin.authors ? plugin.authors.join(', ') : '';
+
     card.innerHTML = `
         <div class="plugin-image-container">
-            <img src="${plugin.iconUrl}" alt="${plugin.name} icon" class="plugin-icon" onerror="this.src='images/favicon.ico'">
+            <img src="${plugin.cardUrl}" alt="${plugin.name} icon" class="plugin-icon" onerror="this.src='images/favicon.ico'">
         </div>
 
         <div class="plugin-content">
             <div class="plugin-header">
                 <h3 class="plugin-title">${plugin.name}</h3>
-                <div class="plugin-author">by ${plugin.author}</div>
+                <div class="plugin-author">by ${authorsText}</div>
             </div>
 
             <div class="plugin-tags">
