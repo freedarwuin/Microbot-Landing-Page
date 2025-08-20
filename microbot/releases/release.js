@@ -1,5 +1,12 @@
 const releases = [
     {
+        date: new Date('08/15/2025'), //MM/dd/YYYY
+        version: '1.9.8',
+        title: '1.9.8 Release - Introducing the Microbot Hub',
+        content: 'Revolutionary plugin ecosystem launch! Separate repository for community plugins, streamlined development workflow, and comprehensive documentation system.',
+        author: 'Microbot Team'
+    },
+    {
         date: new Date('12/27/2024'), //MM/dd/YYYY
         version: '1.6.6',
         title: '1.6.6 Release',
